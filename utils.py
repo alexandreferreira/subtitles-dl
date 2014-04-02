@@ -113,7 +113,8 @@ def save_subtitles(subtitles, single=False, directory=None, encoding="utf-8"):
             saved_languages.add(video_subtitle.language)
             list_subtitles.append({'provider': video_subtitle.provider_name, 'file_name': file_name,
                                    'video_name': video.name,
-                                   'url_file': url_for('static', filename=video_subtitle.provider_name+"/"+file_name) })
+                                   'url_file': "http://guarded-tor-4488.herokuapp.com/"+
+                                               url_for('static', filename=video_subtitle.provider_name+"/"+file_name) })
             if single:
                 break
     return list_subtitles

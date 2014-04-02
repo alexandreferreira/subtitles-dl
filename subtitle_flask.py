@@ -31,6 +31,6 @@ if __name__ == '__main__':
     if not cache_region.is_configured:
         cache_region.configure('dogpile.cache.dbm', expiration_time=datetime.timedelta(days=30),  # @UndefinedVariable
                            arguments={'filename':BASE_DIR, 'lock_factory': MutexLock})
-    app.run(host="0.0.0.0")
+    app.run()
 
 
