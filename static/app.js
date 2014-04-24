@@ -15,7 +15,7 @@ function downlodSubtitle() {
     var language = $("#language").val();
     if (!checkError()) {
         $("#result").html("<h1>Aguarde</h1><img src=\"http://newsbtc.com/wp-content/themes/allegro-theme/images/loading.gif\">");
-        $.getJSON("http://127.0.0.1:5000/search?file_name=" + fileName + "&languages=" + language, function (data) {
+        $.getJSON("/search?file_name=" + fileName + "&languages=" + language, function (data) {
             strName = data[0].file_name;
             strURL = data[0].url_file;
             $("#result").html("</br><a href=\"" + strURL + "\">Download " + strName);
