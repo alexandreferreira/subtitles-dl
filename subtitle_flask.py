@@ -1,7 +1,8 @@
-
 import json
 from flask import Flask, request
+import flask
 from flask.helpers import make_response
+from flask import render_template
 from utils import search_for_subtitle, BASE_DIR
 from subliminal import cache_region, MutexLock
 import datetime
@@ -22,10 +23,14 @@ def get_params(request):
     return info
 
 @app.route('/search', methods=['GET'])
-def hello_world():
+def search():
     params = get_params(request)
     infos = search_for_subtitle(params.get('file_name'), params.get('languages'))
-    return make_response(json.dumps(infos))
+    return flask.Response(json.dumps(infos),  mimetype='application/json')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     if not cache_region.is_configured:
